@@ -1,0 +1,228 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "vitepress": "https://vitepress.dev/vocab#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+
+    "VitePressProject": {
+      "@id": "vitepress:Project",
+      "@context": {
+        "title": {
+          "@id": "dcterms:title"
+        },
+        "description": {
+          "@id": "dcterms:description"
+        },
+        "lang": {
+          "@id": "schema:inLanguage"
+        },
+        "base": {
+          "@id": "vitepress:base"
+        },
+        "srcDir": {
+          "@id": "vitepress:sourceDirectory"
+        },
+        "outDir": {
+          "@id": "vitepress:outputDirectory"
+        },
+        "themeConfig": {
+          "@id": "vitepress:themeConfig"
+        },
+        "locales": {
+          "@id": "vitepress:locales",
+          "@container": "@index"
+        },
+        "lastUpdated": {
+          "@id": "vitepress:lastUpdated",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "VitePressPage": {
+      "@id": "vitepress:Page",
+      "@context": {
+        "title": {
+          "@id": "dcterms:title"
+        },
+        "description": {
+          "@id": "dcterms:description"
+        },
+        "url": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "relativePath": {
+          "@id": "vitepress:relativePath"
+        },
+        "filePath": {
+          "@id": "vitepress:filePath"
+        },
+        "frontmatter": {
+          "@id": "vitepress:frontmatter"
+        },
+        "lastUpdated": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "headers": {
+          "@id": "vitepress:headers",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "VitePressThemeConfig": {
+      "@id": "vitepress:ThemeConfig",
+      "@context": {
+        "logo": {
+          "@id": "schema:logo"
+        },
+        "siteTitle": {
+          "@id": "schema:name"
+        },
+        "nav": {
+          "@id": "vitepress:navigation",
+          "@container": "@list"
+        },
+        "sidebar": {
+          "@id": "vitepress:sidebar"
+        },
+        "socialLinks": {
+          "@id": "schema:sameAs",
+          "@container": "@set"
+        },
+        "footer": {
+          "@id": "vitepress:footer"
+        },
+        "editLink": {
+          "@id": "vitepress:editLink"
+        },
+        "search": {
+          "@id": "vitepress:search"
+        }
+      }
+    },
+
+    "VitePressNavItem": {
+      "@id": "vitepress:NavItem",
+      "@context": {
+        "text": {
+          "@id": "schema:name"
+        },
+        "link": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "items": {
+          "@id": "schema:hasPart",
+          "@container": "@list"
+        },
+        "activeMatch": {
+          "@id": "vitepress:activeMatch"
+        }
+      }
+    },
+
+    "VitePressSidebarItem": {
+      "@id": "vitepress:SidebarItem",
+      "@context": {
+        "text": {
+          "@id": "schema:name"
+        },
+        "link": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "items": {
+          "@id": "schema:hasPart",
+          "@container": "@list"
+        },
+        "collapsed": {
+          "@id": "vitepress:collapsed",
+          "@type": "xsd:boolean"
+        },
+        "base": {
+          "@id": "vitepress:basePath"
+        }
+      }
+    },
+
+    "VitePressHero": {
+      "@id": "vitepress:Hero",
+      "@context": {
+        "name": {
+          "@id": "schema:name"
+        },
+        "text": {
+          "@id": "schema:description"
+        },
+        "tagline": {
+          "@id": "schema:slogan"
+        },
+        "image": {
+          "@id": "schema:image",
+          "@type": "@id"
+        },
+        "actions": {
+          "@id": "schema:potentialAction",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "VitePressFeature": {
+      "@id": "vitepress:Feature",
+      "@context": {
+        "title": {
+          "@id": "schema:name"
+        },
+        "details": {
+          "@id": "schema:description"
+        },
+        "link": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "linkText": {
+          "@id": "vitepress:linkText"
+        },
+        "icon": {
+          "@id": "schema:image"
+        }
+      }
+    },
+
+    "VitePressDataLoader": {
+      "@id": "vitepress:DataLoader",
+      "@context": {
+        "watch": {
+          "@id": "vitepress:watchPattern",
+          "@container": "@set"
+        },
+        "load": {
+          "@id": "vitepress:loadFunction"
+        }
+      }
+    },
+
+    "VitePressSocialLink": {
+      "@id": "schema:ContactPoint",
+      "@context": {
+        "icon": {
+          "@id": "schema:name"
+        },
+        "link": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "ariaLabel": {
+          "@id": "schema:description"
+        }
+      }
+    }
+  }
+}

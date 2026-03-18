@@ -1,0 +1,454 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://apievangelist.com/schemas/vitepress/vitepress-config.json",
+  "title": "VitePress Site Configuration",
+  "description": "Schema for the VitePress site configuration object exported from .vitepress/config.[js|ts|mjs|mts]. Defines all settings that control site metadata, routing, theming, Markdown processing, Vite and Vue integration, and build hooks for generating static documentation sites powered by Vite and Vue.",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title for the site. Displayed in the nav bar when using the default theme and used as the default suffix for all individual page titles.",
+      "default": "VitePress"
+    },
+    "titleTemplate": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "boolean" }
+      ],
+      "description": "Suffix or template for page titles. Use ':title' as a placeholder for the page title. Set to false to disable title suffixes."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description for the site rendered as a meta tag in each page's HTML.",
+      "default": "A VitePress site"
+    },
+    "head": {
+      "type": "array",
+      "description": "Additional elements to render in the <head> tag. Each item is a tuple of [tag, attributes] or [tag, attributes, innerHTML].",
+      "items": {
+        "$ref": "#/$defs/HeadConfig"
+      },
+      "default": []
+    },
+    "lang": {
+      "type": "string",
+      "description": "Language attribute for the site, e.g. 'en-US'. Rendered as the lang attribute of the <html> element.",
+      "default": "en-US"
+    },
+    "base": {
+      "type": "string",
+      "description": "The base URL the site will be deployed at. Must start and end with a slash. All internal links will be prepended with this value.",
+      "default": "/",
+      "pattern": "^/"
+    },
+    "srcDir": {
+      "type": "string",
+      "description": "The directory where your Markdown pages are stored, relative to project root.",
+      "default": "."
+    },
+    "srcExclude": {
+      "type": "array",
+      "description": "Glob patterns for Markdown files that should be excluded from being treated as content source files.",
+      "items": {
+        "type": "string",
+        "description": "A glob pattern string."
+      }
+    },
+    "outDir": {
+      "type": "string",
+      "description": "The build output location for the site, relative to project root.",
+      "default": "./.vitepress/dist"
+    },
+    "assetsDir": {
+      "type": "string",
+      "description": "Specify the directory to nest generated assets under. The path should be inside outDir.",
+      "default": "assets"
+    },
+    "cacheDir": {
+      "type": "string",
+      "description": "The directory for cache files, relative to project root.",
+      "default": "./.vitepress/cache"
+    },
+    "ignoreDeadLinks": {
+      "description": "When true, VitePress will not fail builds due to dead links. Can be an array of strings, RegExp patterns, or filter functions for selective ignoring.",
+      "oneOf": [
+        { "type": "boolean" },
+        { "type": "string", "enum": ["localhostLinks"] },
+        {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "object", "description": "A RegExp pattern or custom filter function (represented as object in JSON Schema)." }
+            ]
+          }
+        }
+      ],
+      "default": false
+    },
+    "lastUpdated": {
+      "type": "boolean",
+      "description": "Whether to get the last updated timestamp for each page using Git. When enabled with the default theme, displays the last updated time on each page.",
+      "default": false
+    },
+    "appearance": {
+      "description": "Whether to enable dark mode. true uses system preference, 'dark' defaults to dark, false disables toggle, 'force-dark' always dark, 'force-auto' always system preference.",
+      "oneOf": [
+        { "type": "boolean" },
+        {
+          "type": "string",
+          "enum": ["dark", "force-dark", "force-auto"]
+        }
+      ],
+      "default": true
+    },
+    "metaChunk": {
+      "type": "boolean",
+      "description": "Experimental. When true, extracts page metadata to a separate JavaScript chunk instead of inlining it in the initial HTML, reducing per-page payload size.",
+      "default": false
+    },
+    "mpa": {
+      "type": "boolean",
+      "description": "Experimental. When true, builds in MPA (Multi-Page Application) mode which ships 0kb JavaScript by default at the cost of disabling client-side navigation.",
+      "default": false
+    },
+    "markdown": {
+      "type": "object",
+      "description": "Configuration options for the Markdown-it parser and Shiki syntax highlighter. Passed directly to the internal Markdown-it instance.",
+      "additionalProperties": true
+    },
+    "vite": {
+      "type": "object",
+      "description": "Raw Vite configuration passed to the internal Vite dev server and bundler. Accepts any Vite UserConfig options.",
+      "additionalProperties": true
+    },
+    "vue": {
+      "type": "object",
+      "description": "Options passed to the internal @vitejs/plugin-vue instance for configuring Vue SFC compilation.",
+      "additionalProperties": true
+    },
+    "themeConfig": {
+      "$ref": "#/$defs/DefaultThemeConfig",
+      "description": "Theme configuration object. When using the default theme this is typed as DefaultTheme.Config. Custom themes receive this object as-is."
+    },
+    "locales": {
+      "type": "object",
+      "description": "Internationalization configuration. Keys are locale paths (or 'root' for the default locale) and values are locale-specific config objects.",
+      "additionalProperties": {
+        "$ref": "#/$defs/LocaleConfig"
+      }
+    },
+    "buildEnd": {
+      "type": "object",
+      "description": "Build hook called after SSG build completes but before the CLI process exits. Receives the SiteConfig. (Function — represented as object in JSON Schema.)"
+    },
+    "postRender": {
+      "type": "object",
+      "description": "Build hook called when SSG rendering is done. Allows handling teleports content during SSG. (Function — represented as object in JSON Schema.)"
+    },
+    "transformHead": {
+      "type": "object",
+      "description": "Build hook to transform the <head> before generating each page. Returns additional HeadConfig entries to merge with existing ones. (Function — represented as object in JSON Schema.)"
+    },
+    "transformHtml": {
+      "type": "object",
+      "description": "Build hook to transform the HTML content of each page before saving to disk. (Function — represented as object in JSON Schema.)"
+    },
+    "transformPageData": {
+      "type": "object",
+      "description": "Hook to transform the PageData of each page. Can mutate pageData directly or return a partial object to merge. (Function — represented as object in JSON Schema.)"
+    }
+  },
+  "$defs": {
+    "HeadConfig": {
+      "description": "An HTML head element represented as a tuple. Either [tag, attributes] or [tag, attributes, innerHTML].",
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 3,
+      "items": [
+        {
+          "type": "string",
+          "description": "The HTML tag name, e.g. 'meta', 'link', 'script'."
+        },
+        {
+          "type": "object",
+          "description": "Attribute key-value pairs for the HTML element.",
+          "additionalProperties": { "type": "string" }
+        },
+        {
+          "type": "string",
+          "description": "Optional innerHTML for the element."
+        }
+      ]
+    },
+    "LocaleConfig": {
+      "type": "object",
+      "description": "Per-locale configuration object allowing overrides of site-level config and theme config for a specific language.",
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "The label for this locale displayed in the language selector."
+        },
+        "lang": {
+          "type": "string",
+          "description": "The lang attribute for this locale, e.g. 'en-US', 'zh-CN'."
+        },
+        "title": {
+          "type": "string",
+          "description": "Override for the site title in this locale."
+        },
+        "description": {
+          "type": "string",
+          "description": "Override for the site description in this locale."
+        },
+        "themeConfig": {
+          "$ref": "#/$defs/DefaultThemeConfig"
+        },
+        "link": {
+          "type": "string",
+          "description": "The link used in the language selector for this locale."
+        }
+      }
+    },
+    "DefaultThemeConfig": {
+      "type": "object",
+      "description": "Configuration for VitePress default theme. Controls navigation, sidebar, search, social links, footer, and other UI elements.",
+      "properties": {
+        "logo": {
+          "description": "Logo displayed in the nav bar. Can be a path string or an object with light/dark variants.",
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "src": { "type": "string", "description": "Path to the logo image." },
+                "alt": { "type": "string", "description": "Alt text for the logo." },
+                "light": { "type": "string", "description": "Path to the light mode logo." },
+                "dark": { "type": "string", "description": "Path to the dark mode logo." }
+              }
+            }
+          ]
+        },
+        "siteTitle": {
+          "description": "Override the site title displayed in the nav bar. Set to false to hide the title.",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "boolean", "enum": [false] }
+          ]
+        },
+        "nav": {
+          "type": "array",
+          "description": "Navigation bar items displayed in the top nav.",
+          "items": { "$ref": "#/$defs/NavItem" }
+        },
+        "sidebar": {
+          "description": "Sidebar navigation configuration. Can be a flat array of sidebar items or a multi-sidebar object keyed by path.",
+          "oneOf": [
+            {
+              "type": "array",
+              "items": { "$ref": "#/$defs/SidebarItem" }
+            },
+            {
+              "type": "object",
+              "additionalProperties": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": { "$ref": "#/$defs/SidebarItem" }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "items": {
+                        "type": "array",
+                        "items": { "$ref": "#/$defs/SidebarItem" }
+                      },
+                      "base": { "type": "string", "description": "Base path prefix for all sidebar items in this group." }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "aside": {
+          "description": "Location of the aside (table of contents) component. true=right, 'left'=left, false=hidden.",
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "string", "enum": ["left"] }
+          ],
+          "default": true
+        },
+        "outline": {
+          "description": "Which header levels to display in the page outline. Can be a number, tuple range, 'deep' (all), or false to hide.",
+          "oneOf": [
+            { "type": "number", "minimum": 1, "maximum": 6 },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "type": "number", "minimum": 1, "maximum": 6 }
+            },
+            { "type": "string", "enum": ["deep"] },
+            { "type": "boolean", "enum": [false] }
+          ],
+          "default": 2
+        },
+        "socialLinks": {
+          "type": "array",
+          "description": "Social media links displayed in the nav bar.",
+          "items": { "$ref": "#/$defs/SocialLink" }
+        },
+        "footer": {
+          "$ref": "#/$defs/Footer",
+          "description": "Footer configuration shown at the bottom of the page."
+        },
+        "editLink": {
+          "$ref": "#/$defs/EditLink",
+          "description": "Edit link configuration for linking to the source file in a repository."
+        },
+        "lastUpdatedText": {
+          "type": "string",
+          "description": "Label text for the last updated timestamp displayed at the bottom of pages.",
+          "default": "Last updated"
+        },
+        "search": {
+          "$ref": "#/$defs/SearchConfig",
+          "description": "Search configuration. Supports built-in local search or Algolia DocSearch."
+        },
+        "carbonAds": {
+          "$ref": "#/$defs/CarbonAdsConfig",
+          "description": "Carbon Ads configuration for displaying ads in the sidebar."
+        },
+        "i18nRouting": {
+          "type": "boolean",
+          "description": "When false, disables automatic locale-based URL routing (e.g., /zh/foo instead of /foo)."
+        },
+        "notFound": {
+          "type": "object",
+          "description": "Customization for the 404 Not Found page.",
+          "properties": {
+            "title": { "type": "string", "description": "Title text for the 404 page." },
+            "quote": { "type": "string", "description": "Quote text displayed on the 404 page." },
+            "linkLabel": { "type": "string", "description": "Label for the home link on the 404 page." },
+            "linkText": { "type": "string", "description": "Text for the home link button on the 404 page." }
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "NavItem": {
+      "type": "object",
+      "description": "A navigation bar item, either a link or a dropdown menu.",
+      "properties": {
+        "text": { "type": "string", "description": "Display text for the nav item." },
+        "link": { "type": "string", "description": "URL for the nav link." },
+        "items": {
+          "type": "array",
+          "description": "Dropdown items for a nav group.",
+          "items": { "$ref": "#/$defs/NavItem" }
+        },
+        "activeMatch": { "type": "string", "description": "RegExp string for matching the active route." },
+        "target": { "type": "string", "description": "HTML target attribute for the link." },
+        "rel": { "type": "string", "description": "HTML rel attribute for the link." },
+        "noIcon": { "type": "boolean", "description": "When true, suppresses the external link icon." }
+      }
+    },
+    "SidebarItem": {
+      "type": "object",
+      "description": "A sidebar navigation item, which can be a link, a section header, or a collapsible group.",
+      "properties": {
+        "text": { "type": "string", "description": "Display text for the sidebar item." },
+        "link": { "type": "string", "description": "URL for this sidebar item." },
+        "items": {
+          "type": "array",
+          "description": "Child sidebar items for a group.",
+          "items": { "$ref": "#/$defs/SidebarItem" }
+        },
+        "collapsed": {
+          "type": "boolean",
+          "description": "Whether the group is collapsible. If omitted the group is not collapsible. true=collapsible and initially collapsed, false=collapsible but initially expanded."
+        },
+        "base": { "type": "string", "description": "Base path prefix for all child items." },
+        "docFooterText": { "type": "string", "description": "Custom text for the prev/next footer when this item is active." },
+        "rel": { "type": "string", "description": "HTML rel attribute for the link." },
+        "target": { "type": "string", "description": "HTML target attribute for the link." }
+      }
+    },
+    "SocialLink": {
+      "type": "object",
+      "description": "A social media link displayed as an icon in the nav bar.",
+      "required": ["icon", "link"],
+      "properties": {
+        "icon": {
+          "description": "Icon identifier or SVG string. Supported values include 'github', 'twitter', 'discord', 'facebook', 'instagram', 'linkedin', 'mastodon', 'npm', 'slack', 'youtube', 'x' or an object with an svg property.",
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": ["github", "twitter", "discord", "facebook", "instagram", "linkedin", "mastodon", "npm", "slack", "youtube", "x", "bluesky"]
+            },
+            {
+              "type": "object",
+              "required": ["svg"],
+              "properties": {
+                "svg": { "type": "string", "description": "Raw SVG string for a custom icon." }
+              }
+            }
+          ]
+        },
+        "link": { "type": "string", "format": "uri", "description": "URL for the social link." },
+        "ariaLabel": { "type": "string", "description": "Accessibility label for the social link icon." }
+      }
+    },
+    "Footer": {
+      "type": "object",
+      "description": "Footer configuration displayed at the bottom of pages in the default theme.",
+      "properties": {
+        "message": { "type": "string", "description": "Footer message text (supports HTML)." },
+        "copyright": { "type": "string", "description": "Copyright notice text (supports HTML)." }
+      }
+    },
+    "EditLink": {
+      "type": "object",
+      "description": "Configuration for the 'Edit this page' link pointing to the page source in a repository.",
+      "required": ["pattern"],
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "description": "URL pattern for the edit link. Use ':path' as a placeholder for the page file path, e.g. 'https://github.com/org/repo/edit/main/docs/:path'."
+        },
+        "text": {
+          "type": "string",
+          "description": "Display text for the edit link.",
+          "default": "Edit this page"
+        }
+      }
+    },
+    "SearchConfig": {
+      "type": "object",
+      "description": "Search integration configuration. Supports 'local' (built-in) or 'algolia' (DocSearch).",
+      "required": ["provider"],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "description": "The search provider to use.",
+          "enum": ["local", "algolia"]
+        },
+        "options": {
+          "type": "object",
+          "description": "Provider-specific options. For 'algolia', includes appId, apiKey, and indexName. For 'local', includes locales and other local search settings.",
+          "additionalProperties": true
+        }
+      }
+    },
+    "CarbonAdsConfig": {
+      "type": "object",
+      "description": "Carbon Ads configuration for displaying ads in the documentation sidebar.",
+      "required": ["code", "placement"],
+      "properties": {
+        "code": { "type": "string", "description": "Your Carbon Ads code." },
+        "placement": { "type": "string", "description": "Your Carbon Ads placement." }
+      }
+    }
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://apievangelist.com/schemas/vitepress/vitepress-frontmatter.json",
+  "title": "VitePress Page Frontmatter",
+  "description": "Schema for YAML frontmatter in VitePress Markdown pages. Frontmatter allows per-page overrides of site-level and theme-level configuration, as well as page-specific settings like layout, hero content, and feature lists. Frontmatter is defined in the YAML block at the top of a Markdown file between triple-dash delimiters.",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Override the page title. Overrides the site-level title config for this page."
+    },
+    "titleTemplate": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "boolean" }
+      ],
+      "description": "Override the title suffix template for this page. Set to false to disable the title suffix."
+    },
+    "description": {
+      "type": "string",
+      "description": "Override the page description meta tag. Overrides the site-level description for this page."
+    },
+    "head": {
+      "type": "array",
+      "description": "Additional head tags to inject for this page, appended after site-level head tags.",
+      "items": {
+        "type": "array",
+        "description": "A head element tuple: [tag, attributes] or [tag, attributes, innerHTML].",
+        "minItems": 2,
+        "maxItems": 3
+      }
+    },
+    "layout": {
+      "type": "string",
+      "description": "The layout template to use for this page. 'doc' applies documentation styles, 'home' enables the landing page layout with hero and features, 'page' is a blank canvas without documentation styles.",
+      "enum": ["doc", "home", "page"],
+      "default": "doc"
+    },
+    "navbar": {
+      "type": "boolean",
+      "description": "Whether to display the navigation bar on this page.",
+      "default": true
+    },
+    "sidebar": {
+      "type": "boolean",
+      "description": "Whether to display the sidebar navigation on this page.",
+      "default": true
+    },
+    "aside": {
+      "description": "Location of the aside/table-of-contents component. true=right, 'left'=left, false=hidden.",
+      "oneOf": [
+        { "type": "boolean" },
+        { "type": "string", "enum": ["left"] }
+      ],
+      "default": true
+    },
+    "outline": {
+      "description": "Which header levels to display in the page outline. Overrides the themeConfig.outline setting.",
+      "oneOf": [
+        { "type": "number", "minimum": 1, "maximum": 6 },
+        {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "type": "number", "minimum": 1, "maximum": 6 }
+        },
+        { "type": "string", "enum": ["deep"] },
+        { "type": "boolean", "enum": [false] }
+      ]
+    },
+    "lastUpdated": {
+      "description": "Whether to display the last updated timestamp on this page. Can be true/false or a specific date to override the git timestamp.",
+      "oneOf": [
+        { "type": "boolean" },
+        { "type": "string", "format": "date" }
+      ],
+      "default": true
+    },
+    "editLink": {
+      "type": "boolean",
+      "description": "Whether to display the 'Edit this page' link on this page.",
+      "default": true
+    },
+    "footer": {
+      "type": "boolean",
+      "description": "Whether to display the footer on this page.",
+      "default": true
+    },
+    "pageClass": {
+      "type": "string",
+      "description": "Add a custom CSS class to the page container element for per-page styling."
+    },
+    "hero": {
+      "$ref": "#/$defs/HeroConfig",
+      "description": "Hero section configuration. Only applies when layout is 'home'."
+    },
+    "features": {
+      "type": "array",
+      "description": "Features section configuration. Only applies when layout is 'home'. Renders a grid of feature cards below the hero.",
+      "items": { "$ref": "#/$defs/FeatureItem" }
+    }
+  },
+  "$defs": {
+    "HeroConfig": {
+      "type": "object",
+      "description": "Configuration for the home page hero section.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The main name/brand text displayed prominently in the hero. Falls back to the site title if not set."
+        },
+        "text": {
+          "type": "string",
+          "description": "The hero tagline displayed below the name."
+        },
+        "tagline": {
+          "type": "string",
+          "description": "Additional subtext displayed below the main text."
+        },
+        "image": {
+          "description": "An image displayed alongside the hero text. Can be a path string or an object with light/dark variants.",
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "src": { "type": "string", "description": "Path to the hero image." },
+                "alt": { "type": "string", "description": "Alt text for the hero image." },
+                "light": { "type": "string", "description": "Path to the light mode hero image." },
+                "dark": { "type": "string", "description": "Path to the dark mode hero image." }
+              }
+            }
+          ]
+        },
+        "actions": {
+          "type": "array",
+          "description": "Call-to-action buttons displayed in the hero section.",
+          "items": { "$ref": "#/$defs/HeroAction" }
+        }
+      }
+    },
+    "HeroAction": {
+      "type": "object",
+      "description": "A call-to-action button in the hero section.",
+      "required": ["text", "link"],
+      "properties": {
+        "theme": {
+          "type": "string",
+          "description": "Visual style of the button.",
+          "enum": ["brand", "alt"],
+          "default": "brand"
+        },
+        "text": {
+          "type": "string",
+          "description": "Button label text."
+        },
+        "link": {
+          "type": "string",
+          "description": "URL the button links to."
+        },
+        "target": {
+          "type": "string",
+          "description": "HTML target attribute for the button link."
+        },
+        "rel": {
+          "type": "string",
+          "description": "HTML rel attribute for the button link."
+        }
+      }
+    },
+    "FeatureItem": {
+      "type": "object",
+      "description": "A feature card displayed in the features grid on the home page.",
+      "required": ["title"],
+      "properties": {
+        "icon": {
+          "description": "An emoji, image path, or object with light/dark image variants for the feature icon.",
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "src": { "type": "string", "description": "Image path for the icon." },
+                "alt": { "type": "string", "description": "Alt text for the icon image." },
+                "light": { "type": "string", "description": "Image path for light mode icon." },
+                "dark": { "type": "string", "description": "Image path for dark mode icon." },
+                "width": { "type": "string", "description": "Width of the icon image." },
+                "height": { "type": "string", "description": "Height of the icon image." }
+              }
+            }
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "The feature card title."
+        },
+        "details": {
+          "type": "string",
+          "description": "Descriptive text for the feature card."
+        },
+        "link": {
+          "type": "string",
+          "description": "URL to link to when the feature card is clicked."
+        },
+        "linkText": {
+          "type": "string",
+          "description": "Link text displayed at the bottom of the feature card."
+        },
+        "rel": {
+          "type": "string",
+          "description": "HTML rel attribute for the feature card link."
+        },
+        "target": {
+          "type": "string",
+          "description": "HTML target attribute for the feature card link."
+        }
+      }
+    }
+  }
+}
