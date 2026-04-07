@@ -1,18 +1,12 @@
 aid: vitepress
 name: VitePress
 description: >-
-  VitePress is a Vite and Vue powered static site generator widely used for
-  developer documentation. It converts Markdown content into fast, beautiful
-  documentation sites with support for Vue components embedded directly in
-  Markdown pages. VitePress ships a polished default theme with built-in dark
-  mode, mobile-responsive layout, full-text local search, Algolia DocSearch
-  integration, internationalization, and automatic sitemap generation. Its
-  configuration is TypeScript-first, providing IntelliSense for all config
-  options. A rich build hook system (buildEnd, postRender, transformHead,
-  transformHtml, transformPageData) enables advanced customizations such as PWA
-  support and custom search indexing. Data loaders allow fetching remote or
-  local file data at build time for generating dynamic content like blog
-  indexes and API references.
+  VitePress is a Vite and Vue powered static site generator widely used for developer
+  documentation. It converts Markdown content into fast, beautiful documentation sites
+  with support for Vue components embedded directly in Markdown pages. VitePress ships
+  a polished default theme with built-in dark mode, mobile-responsive layout, full-text
+  local search, Algolia DocSearch integration, internationalization, and automatic
+  sitemap generation.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
