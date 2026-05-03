@@ -1,0 +1,152 @@
+vocabulary:
+  name: VitePress Vocabulary
+  description: >-
+    Vocabulary for VitePress, the Vite and Vue powered static site generator for
+    developer documentation. Covers configuration, theming, content authoring,
+    and build concepts.
+  version: "1.0"
+  created: "2026-05-03"
+  tags:
+    - Documentation
+    - Markdown
+    - Open Source
+    - Static Site Generator
+    - Vite
+    - Vue
+
+terms:
+  - term: VitePress
+    definition: >-
+      A static site generator powered by Vite and Vue 3. Converts Markdown files into
+      a fast, beautiful documentation site with a polished default theme. VitePress is
+      the successor to VuePress and is the official documentation framework for Vue,
+      Vite, Rollup, Pinia, and many other open source projects.
+    tags:
+      - Core
+      - Platform
+
+  - term: Frontmatter
+    definition: >-
+      YAML metadata block at the top of a Markdown file enclosed by triple-dash
+      delimiters (---). Used to define per-page settings such as layout, title,
+      description, hero content, and feature lists that override site-level defaults.
+    tags:
+      - Content
+      - Core
+
+  - term: Configuration
+    definition: >-
+      The site-wide settings exported from .vitepress/config.[js|ts|mjs|mts]. Controls
+      site metadata, routing, theming, Markdown processing, Vite integration, and build
+      behavior. Typed as UserConfig in TypeScript.
+    tags:
+      - Configuration
+      - Core
+
+  - term: Theme
+    definition: >-
+      The visual layout and component system for a VitePress site. The built-in default
+      theme includes navigation, sidebar, full-text search, dark mode, mobile layout,
+      footer, edit links, and internationalization support.
+    tags:
+      - Theming
+      - UI
+
+  - term: ThemeConfig
+    definition: >-
+      Configuration specific to the default theme, nested under the themeConfig key in
+      the site config. Controls logo, navigation, sidebar, social links, footer, edit
+      link, and search provider settings.
+    tags:
+      - Configuration
+      - Theming
+
+  - term: Sidebar
+    definition: >-
+      A navigational element rendered on the left side of documentation pages. Can be
+      a flat array of items or a multi-sidebar object keyed by path prefix. Items
+      support nesting, collapsing, and base path inheritance.
+    tags:
+      - Navigation
+      - UI
+
+  - term: Nav
+    definition: >-
+      The top navigation bar items in a VitePress site. Each item has a text label and
+      either a link or a dropdown of sub-items. Active items are highlighted based on
+      path matching.
+    tags:
+      - Navigation
+      - UI
+
+  - term: Data Loader
+    definition: >-
+      A build-time data fetching mechanism using .data.js or .data.ts files that export
+      a load() function and optional watch patterns. Data is fetched at build time and
+      injected into pages via the useData() composable.
+    tags:
+      - Data
+      - Build
+
+  - term: useData()
+    definition: >-
+      A Vue composition API function provided by VitePress that returns site-level and
+      page-level reactive data including site config, theme config, frontmatter, route,
+      dark mode state, and localized strings.
+    tags:
+      - API
+      - Runtime
+
+  - term: useRouter()
+    definition: >-
+      A Vue composition API function that returns the VitePress router instance for
+      programmatic navigation and access to route lifecycle hooks such as onBeforeRouteChange
+      and onAfterRouteChanged.
+    tags:
+      - API
+      - Runtime
+
+  - term: withBase()
+    definition: >-
+      A VitePress helper function that prepends the configured base URL to a path string.
+      Used when constructing absolute URLs for assets or links in a site deployed to a
+      non-root path.
+    tags:
+      - API
+      - Utility
+
+  - term: Algolia DocSearch
+    definition: >-
+      A hosted full-text search service for documentation sites integrated with the
+      VitePress default theme. Configured via themeConfig.search with an Algolia
+      appId, apiKey, and indexName.
+    tags:
+      - Search
+      - Integration
+
+  - term: MPA Mode
+    definition: >-
+      Multi-Page Application build mode in VitePress that generates zero-JavaScript
+      HTML pages by default. Optimizes initial load time at the cost of client-side
+      navigation performance. Enabled via the mpa: true config option.
+    tags:
+      - Build
+      - Performance
+
+  - term: Carbon Ads
+    definition: >-
+      Optional advertising integration supported by the VitePress default theme via
+      themeConfig.carbonAds, allowing documentation sites to monetize with developer-
+      focused advertisements from Carbon.
+    tags:
+      - Monetization
+      - Integration
+
+  - term: Internationalization (i18n)
+    definition: >-
+      Multi-language support in VitePress implemented via the locales configuration key.
+      Each locale entry maps a root path to a locale config with its own title, description,
+      language, and theme config, enabling fully translated documentation sites.
+    tags:
+      - i18n
+      - Configuration

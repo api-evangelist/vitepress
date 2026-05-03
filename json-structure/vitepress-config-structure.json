@@ -1,0 +1,41 @@
+{
+  "title": "VitePress Site Configuration Structure",
+  "description": "Structural documentation for the VitePress site configuration object exported from .vitepress/config.[js|ts]",
+  "type": "object",
+  "fields": [
+    { "name": "title", "type": "string", "required": false, "description": "Site title shown in nav bar" },
+    { "name": "titleTemplate", "type": "string|boolean", "required": false, "description": "Page title suffix template" },
+    { "name": "description", "type": "string", "required": false, "description": "Site meta description" },
+    { "name": "head", "type": "array", "required": false, "description": "Additional HTML head elements" },
+    { "name": "lang", "type": "string", "required": false, "description": "Site language e.g. en-US" },
+    { "name": "base", "type": "string", "required": false, "description": "Base URL for deployment" },
+    { "name": "srcDir", "type": "string", "required": false, "description": "Markdown pages directory" },
+    { "name": "outDir", "type": "string", "required": false, "description": "Build output directory" },
+    { "name": "cleanUrls", "type": "boolean", "required": false, "description": "Remove .html from URLs" },
+    { "name": "rewrites", "type": "object", "required": false, "description": "Custom URL rewrites map" },
+    { "name": "appearance", "type": "boolean|string|object", "required": false, "description": "Dark mode configuration" },
+    { "name": "lastUpdated", "type": "boolean", "required": false, "description": "Show git last updated timestamp" },
+    { "name": "ignoreDeadLinks", "type": "boolean|string|array", "required": false, "description": "Dead link handling" },
+    {
+      "name": "themeConfig",
+      "type": "object",
+      "required": false,
+      "description": "Default theme configuration",
+      "fields": [
+        { "name": "logo", "type": "string|object", "description": "Site logo" },
+        { "name": "siteTitle", "type": "string|boolean", "description": "Nav bar site title" },
+        { "name": "nav", "type": "array", "description": "Top navigation items" },
+        { "name": "sidebar", "type": "array|object", "description": "Sidebar navigation" },
+        { "name": "socialLinks", "type": "array", "description": "Social profile links" },
+        { "name": "footer", "type": "object", "description": "Footer message and copyright" },
+        { "name": "editLink", "type": "object", "description": "Edit on GitHub link" },
+        { "name": "search", "type": "object", "description": "Search configuration" },
+        { "name": "darkModeSwitchLabel", "type": "string", "description": "Dark mode toggle label" },
+        { "name": "i18nRouting", "type": "boolean", "description": "Enable i18n routing" }
+      ]
+    },
+    { "name": "markdown", "type": "object", "required": false, "description": "Markdown-it parser configuration" },
+    { "name": "vite", "type": "object", "required": false, "description": "Vite bundler configuration passthrough" },
+    { "name": "vue", "type": "object", "required": false, "description": "Vue plugin configuration passthrough" }
+  ]
+}

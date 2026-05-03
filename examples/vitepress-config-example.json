@@ -1,0 +1,48 @@
+{
+  "description": "Example VitePress site configuration in .vitepress/config.ts",
+  "type": "configuration",
+  "language": "typescript",
+  "filename": ".vitepress/config.ts",
+  "content": {
+    "title": "My Docs",
+    "description": "A VitePress Site",
+    "lang": "en-US",
+    "base": "/",
+    "cleanUrls": true,
+    "lastUpdated": true,
+    "themeConfig": {
+      "logo": "/logo.svg",
+      "siteTitle": "My Docs",
+      "nav": [
+        { "text": "Guide", "link": "/guide/" },
+        { "text": "Reference", "link": "/reference/" },
+        { "text": "Examples", "link": "/examples/" }
+      ],
+      "sidebar": {
+        "/guide/": [
+          {
+            "text": "Getting Started",
+            "items": [
+              { "text": "Introduction", "link": "/guide/introduction" },
+              { "text": "Installation", "link": "/guide/installation" }
+            ]
+          }
+        ]
+      },
+      "socialLinks": [
+        { "icon": "github", "link": "https://github.com/vuejs/vitepress" }
+      ],
+      "footer": {
+        "message": "Released under the MIT License.",
+        "copyright": "Copyright 2024-present Evan You"
+      },
+      "editLink": {
+        "pattern": "https://github.com/vuejs/vitepress/edit/main/docs/:path",
+        "text": "Edit this page on GitHub"
+      },
+      "search": {
+        "provider": "local"
+      }
+    }
+  }
+}

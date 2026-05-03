@@ -1,0 +1,46 @@
+{
+  "description": "Example VitePress home page frontmatter for a landing page with hero and features sections",
+  "type": "frontmatter",
+  "language": "yaml",
+  "filename": "index.md",
+  "content": {
+    "layout": "home",
+    "title": "VitePress",
+    "titleTemplate": ":title - Vite & Vue Powered Static Site Generator",
+    "description": "VitePress is a Vite & Vue powered static site generator",
+    "hero": {
+      "name": "VitePress",
+      "text": "Vite & Vue Powered Static Site Generator",
+      "tagline": "Simple, powerful, and performant. Meet the modern SSG framework you've always wanted.",
+      "actions": [
+        {
+          "theme": "brand",
+          "text": "Get Started",
+          "link": "/guide/what-is-vitepress"
+        },
+        {
+          "theme": "alt",
+          "text": "View on GitHub",
+          "link": "https://github.com/vuejs/vitepress"
+        }
+      ]
+    },
+    "features": [
+      {
+        "icon": "📝",
+        "title": "Focus on Your Content",
+        "details": "Effortlessly create beautiful documentation sites with just markdown."
+      },
+      {
+        "icon": "⚡️",
+        "title": "Enjoy the Vite DX",
+        "details": "Instant server start, lightning fast hot updates, and leverage Vite ecosystem plugins."
+      },
+      {
+        "icon": "🎨",
+        "title": "Customizable with Vue",
+        "details": "Use Vue components directly in markdown, or build custom themes with the Vue API."
+      }
+    ]
+  }
+}
