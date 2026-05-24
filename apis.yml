@@ -81,6 +81,8 @@ common:
     url: json-structure/vitepress-config-structure.json
   - type: Vocabulary
     url: vocabulary/vitepress-vocabulary.yml
+  - type: LLMsTxt
+    url: https://vitepress.dev/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
