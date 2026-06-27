@@ -81,7 +81,7 @@ common:
     url: json-structure/vitepress-config-structure.json
   - type: Vocabulary
     url: vocabulary/vitepress-vocabulary.yml
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://vitepress.dev/llms.txt
 maintainers:
   - FN: Kin Lane
