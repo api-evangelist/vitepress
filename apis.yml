@@ -65,6 +65,8 @@ apis:
       - type: Reference
         url: https://vitepress.dev/reference/default-theme-config
 common:
+  - type: DomainSecurity
+    url: security/vitepress-domain-security.yml
   - type: Website
     url: https://vitepress.dev
   - type: Documentation
