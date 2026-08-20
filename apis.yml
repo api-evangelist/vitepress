@@ -25,6 +25,13 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/vitepress.
 tags:
   - Documentation
   - Markdown
+  - Open-Source
+  - Static Site Generator
+  - Vite
+  - Vue
+tags_raw:
+  - Documentation
+  - Markdown
   - Open Source
   - Static Site Generator
   - Vite
@@ -46,6 +53,12 @@ apis:
     humanURL: https://vitepress.dev/reference/runtime-api
     baseURL: https://vitepress.dev
     tags:
+      - Composables
+      - Documentation
+      - JavaScript
+      - Runtime
+      - Vue
+    tags_raw:
       - API
       - Composables
       - Documentation
