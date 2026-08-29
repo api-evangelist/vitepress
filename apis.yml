@@ -9,6 +9,17 @@ description: >-
   sitemap generation. VitePress is the official documentation framework used by Vue,
   Vite, Rollup, Pinia, and many CNCF and open source projects.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
