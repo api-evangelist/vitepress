@@ -93,6 +93,11 @@ apis:
     tags:
       - Configuration
       - Documentation
+      - Static Sites
+      - Theming
+    tags_raw:
+      - Configuration
+      - Documentation
       - Static Site
       - Theming
     properties:
