@@ -10,15 +10,20 @@ description: >-
   Vite, Rollup, Pinia, and many CNCF and open source projects.
 type: Index
 deliveryModel:
-  model: unknown
-  open_source: false
+  model: self-hosted
+  license: MIT
+  license_evidence:
+    repo: vuejs/vitepress
+    spdx: MIT
+    stars: 18345
+  open_source: true
   commercial: false
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
+  label: Self-hosted open source · you run it yourself
+  confidence: medium
   source:
-  - none
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -36,7 +41,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/vitepress.
 tags:
   - Documentation
   - Markdown
-  - Open-Source
+  - Open Source
   - Static Site Generator
   - Vite
   - Vue
@@ -47,6 +52,7 @@ tags_raw:
   - Static Site Generator
   - Vite
   - Vue
+  - Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/vitepress/refs/heads/main/apis.yml
 created: '2026-03-18'
 modified: '2026-05-03'
@@ -62,7 +68,6 @@ apis:
       Components include Content for rendering compiled Markdown and ClientOnly for
       browser-only rendering.
     humanURL: https://vitepress.dev/reference/runtime-api
-    baseURL: https://vitepress.dev
     tags:
       - Composables
       - Documentation
@@ -89,7 +94,6 @@ apis:
       Vite and Vue integration, and build hooks. Includes the default theme configuration
       for navigation, sidebar, search, social links, and internationalization.
     humanURL: https://vitepress.dev/reference/site-config
-    baseURL: https://vitepress.dev
     tags:
       - Configuration
       - Documentation
