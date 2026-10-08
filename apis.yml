@@ -110,6 +110,12 @@ apis:
       - type: Reference
         url: https://vitepress.dev/reference/default-theme-config
 common:
+  - type: Plans
+    url: plans/vitepress-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/vitepress-rate-limits.yml
+  - type: FinOps
+    url: finops/vitepress-finops.yml
   - type: DomainSecurity
     url: security/vitepress-domain-security.yml
   - type: Website
